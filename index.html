@@ -1,2410 +1,284 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<meta name="description" content="Sohail Ahmed — Senior Web Developer. WordPress, Elementor, WooCommerce, responsive websites and custom web experiences.">
-<meta name="theme-color" content="#07080b">
-
-<link rel="icon" type="image/png" href="favicon.png">
-
-<title>Sohail Ahmed — Senior Web Developer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Makhdoom Nawz — Web Developer Portfolio">
+<meta name="theme-color" content="#f4efe6">
+<title>Makhdoom Nawz — Web Developer</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 <style>
-
 :root{
- --bg:#07080b;
- --panel:#0d1015;
- --panel2:#11151d;
- --text:#f5f7fb;
- --muted:#9ba3b2;
- --line:#202631;
- --accent:#8b5cf6;
- --accent2:#22d3ee;
- --max:1280px;
+  --cream:#f4efe6;
+  --ink:#17231f;
+  --forest:#173d32;
+  --lime:#c8f05a;
+  --orange:#ff6b35;
+  --sand:#ded5c6;
+  --white:#fffdf8;
+  --muted:#63706a;
+  --line:rgba(23,35,31,.14);
+  --radius:24px;
 }
-
-*{
- box-sizing:border-box;
- margin:0;
- padding:0;
-}
-
-html{
- scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{
- background:
- radial-gradient(circle at 80% 0%,rgba(139,92,246,.14),transparent 28%),
- radial-gradient(circle at 0% 40%,rgba(34,211,238,.08),transparent 24%),
- var(--bg);
+  background:var(--cream); color:var(--ink); font-family:Manrope,sans-serif;
+  overflow-x:hidden; cursor:none;
+}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(1180px,calc(100% - 48px));margin:auto}
+::selection{background:var(--lime);color:var(--ink)}
+
+/* CUSTOM CURSOR */
+.cursor{position:fixed;left:0;top:0;width:18px;height:18px;border:2px solid var(--forest);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:multiply;transition:width .2s,height .2s,background .2s}
+.cursor-dot{position:fixed;left:0;top:0;width:5px;height:5px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%)}
+.cursor.big{width:58px;height:58px;background:var(--lime);border-color:transparent;opacity:.8}
+@media(pointer:coarse){body{cursor:auto}.cursor,.cursor-dot{display:none}}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--forest);z-index:10001;display:flex;align-items:center;justify-content:center;color:var(--cream);transition:transform .8s cubic-bezier(.77,0,.18,1)}
+.loader.hide{transform:translateY(-100%)}
+.loader span{font:600 clamp(30px,6vw,80px) 'Playfair Display';overflow:hidden}
+
+/* NAV */
+header{position:relative;z-index:10;padding:20px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:20px}
+.logo{font-size:18px;font-weight:800;letter-spacing:-.7px}
+.logo i{color:var(--orange);font-style:normal}
+.nav-links{display:flex;gap:26px;font-size:13px;font-weight:700}
+.nav-links a{position:relative}
+.nav-links a:after{content:"";position:absolute;width:0;height:2px;bottom:-6px;left:0;background:var(--orange);transition:.3s}
+.nav-links a:hover:after{width:100%}
+.nav-cta{background:var(--forest);color:var(--white);padding:12px 18px;border-radius:999px;font-size:12px;font-weight:800}
+
+/* HERO */
+.hero{min-height:calc(100vh - 102px);display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:60px;padding:70px 0 90px}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);padding:8px 13px;border-radius:999px;font:500 11px 'DM Mono';text-transform:uppercase;letter-spacing:1px}
+.hero-tag b{width:8px;height:8px;background:var(--lime);border-radius:50%;box-shadow:0 0 0 5px rgba(200,240,90,.22)}
+.hero h1{font:700 clamp(55px,8vw,105px)/.92 'Playfair Display';letter-spacing:-4px;margin:25px 0}
+.hero h1 em{font-style:italic;color:var(--forest)}
+.hero p{font-size:17px;line-height:1.8;color:var(--muted);max-width:590px}
+.hero-actions{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 22px;border-radius:999px;font-size:13px;font-weight:800;transition:.3s}
+.btn-main{background:var(--orange);color:#fff}
+.btn-main:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:0 16px 35px rgba(255,107,53,.25)}
+.btn-alt{border:1px solid var(--ink)}
+.btn-alt:hover{background:var(--ink);color:#fff}
+.hero-art{height:540px;position:relative}
+.shape-main{position:absolute;inset:35px 20px 35px 50px;background:var(--forest);border-radius:48% 52% 44% 56% / 58% 38% 62% 42%;animation:morph 9s ease-in-out infinite;overflow:hidden}
+.shape-main:before{content:"";position:absolute;width:350px;height:350px;border-radius:50%;background:var(--lime);right:-100px;top:-100px;opacity:.9}
+.shape-main:after{content:"WEB";position:absolute;bottom:30px;left:30px;color:rgba(255,255,255,.08);font:800 130px Manrope;letter-spacing:-10px}
+.floating-card{position:absolute;background:var(--white);padding:22px;border-radius:18px;box-shadow:0 25px 60px rgba(23,35,31,.16);animation:float 4s ease-in-out infinite}
+.card-one{left:0;bottom:65px}.card-two{right:0;top:70px;animation-delay:-2s}
+.floating-card small{font:500 10px 'DM Mono';color:var(--muted)}.floating-card strong{display:block;margin-top:7px;font-size:15px}
+.mini-bars{display:flex;gap:4px;margin-top:14px}.mini-bars i{display:block;width:14px;background:var(--orange);border-radius:4px}.mini-bars i:nth-child(1){height:15px}.mini-bars i:nth-child(2){height:25px}.mini-bars i:nth-child(3){height:34px}.mini-bars i:nth-child(4){height:20px}
+@keyframes morph{50%{border-radius:58% 42% 62% 38% / 40% 60% 40% 60%}}
+@keyframes float{50%{transform:translateY(-15px) rotate(1deg)}}
+
+/* MARQUEE */
+.marquee{background:var(--ink);color:var(--cream);overflow:hidden;padding:18px 0;white-space:nowrap}
+.marquee-track{display:inline-block;animation:marquee 20s linear infinite;font:700 14px 'DM Mono';letter-spacing:2px}
+.marquee b{color:var(--lime);margin:0 22px}@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* GENERAL */
+section{padding:120px 0}
+.section-label{font:500 11px 'DM Mono';letter-spacing:2px;color:var(--orange);text-transform:uppercase;margin-bottom:14px}
+.section-title{font:700 clamp(40px,5vw,68px)/1 'Playfair Display';letter-spacing:-2px;max-width:720px}
+.section-copy{color:var(--muted);line-height:1.8;margin-top:20px;max-width:600px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:end}
+.big-number{font:700 clamp(120px,20vw,230px)/.7 'Playfair Display';color:var(--forest)}
+.about-stats{margin-top:40px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.stat-box{border-top:1px solid var(--ink);padding-top:15px}.stat-box strong{font-size:30px}.stat-box span{display:block;color:var(--muted);font-size:12px;margin-top:5px}
+.skill-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.pill{padding:10px 14px;border:1px solid var(--line);border-radius:999px;font-size:12px;font-weight:700;background:var(--white)}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px}
+.service{padding:30px;border:1px solid var(--line);border-radius:var(--radius);min-height:245px;background:rgba(255,253,248,.45);transition:.35s;position:relative;overflow:hidden}
+.service:hover{transform:translateY(-8px);background:var(--forest);color:#fff}
+.service-num{font:500 11px 'DM Mono';color:var(--orange)}.service h3{font-size:22px;margin:42px 0 12px}.service p{font-size:13px;line-height:1.7;color:var(--muted)}.service:hover p{color:rgba(255,255,255,.65)}
+.service-arrow{position:absolute;right:25px;bottom:22px;font-size:25px;color:var(--lime)}
+
+/* TECH SLIDER */
+.tech-section{background:var(--forest);color:var(--white)}
+.tech-section .section-title{max-width:650px}.tech-section .section-copy{color:rgba(255,255,255,.65)}
+.tech-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:28px;min-height:220px}
+.tech-icon{font-size:42px}.tech-card h3{margin:20px 0 8px}.tech-card p{font-size:13px;color:rgba(255,255,255,.62);line-height:1.7}
+.swiper{padding:50px 0 55px}.swiper-pagination-bullet{background:#fff}.swiper-pagination-bullet-active{background:var(--lime)!important}
+
+/* PROJECTS */
+.projects-intro{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:55px}
+.projects-intro p{max-width:420px;color:var(--muted);line-height:1.7}
+.project-slider .swiper-slide{height:auto}
+.project-card{height:100%;background:var(--white);border:1px solid var(--line);border-radius:28px;padding:26px;display:flex;flex-direction:column;min-height:390px;transition:.35s}
+.project-card:hover{transform:translateY(-8px);box-shadow:0 25px 55px rgba(23,35,31,.1)}
+.project-visual{height:155px;border-radius:16px;background:linear-gradient(135deg,var(--forest),#315f4d);margin-bottom:25px;position:relative;overflow:hidden}
+.project-visual:before{content:"</>";position:absolute;right:15px;bottom:-20px;font:700 110px 'DM Mono';color:rgba(255,255,255,.09)}
+.project-visual.orange{background:linear-gradient(135deg,var(--orange),#f0a34b)}.project-visual.lime{background:linear-gradient(135deg,#9ccf3b,var(--forest)}.project-visual.sand{background:linear-gradient(135deg,#a08d76,#e7dcc9)}
+.project-meta{font:500 10px 'DM Mono';color:var(--orange);text-transform:uppercase;letter-spacing:1px}.project-card h3{font:700 27px 'Playfair Display';margin:10px 0}.project-card p{font-size:13px;color:var(--muted);line-height:1.7}
+.project-card a{margin-top:auto;padding-top:22px;font-size:12px;font-weight:800;color:var(--forest)}.project-card a:hover{color:var(--orange)}
+
+/* CONTACT */
+.contact-box{margin-top:50px;background:var(--orange);border-radius:30px;padding:60px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px;color:#fff}
+.contact-box h2{font:700 clamp(42px,5vw,70px)/1 'Playfair Display';max-width:650px}.contact-box p{margin-top:15px;color:rgba(255,255,255,.8)}
+.contact-button{background:#fff;color:var(--ink);padding:17px 25px;border-radius:999px;font-size:13px;font-weight:800;white-space:nowrap}
 
- color:var(--text);
- font-family:Inter,system-ui,sans-serif;
- line-height:1.6;
- overflow-x:hidden;
-}
-
-body:before{
- content:"";
- position:fixed;
- inset:0;
- pointer-events:none;
- z-index:-1;
-
- background-image:
- linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
- linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-
- background-size:55px 55px;
- mask-image:linear-gradient(to bottom,black,transparent 70%);
-}
-
-a{
- color:inherit;
- text-decoration:none;
-}
-
-.wrap{
- max-width:var(--max);
- margin:auto;
- padding:0 28px;
-}
-
-
-/* =========================
-   ANIMATED CURSOR
-========================= */
-
-.cursor-dot,
-.cursor-ring{
- position:fixed;
- pointer-events:none;
- z-index:9999;
- transform:translate(-50%,-50%);
- border-radius:50%;
- opacity:0;
-}
-
-.cursor-dot{
- width:7px;
- height:7px;
- background:#fff;
- box-shadow:0 0 18px var(--accent2);
- transition:transform .08s;
-}
-
-.cursor-ring{
- width:34px;
- height:34px;
- border:1px solid rgba(139,92,246,.75);
- transition:
- width .2s,
- height .2s,
- border-color .2s,
- opacity .2s;
-}
-
-.cursor-ring.active{
- width:52px;
- height:52px;
- border-color:rgba(34,211,238,.9);
-}
-
-@media (pointer:coarse){
- .cursor-dot,
- .cursor-ring{
-  display:none;
- }
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-.nav{
- height:82px;
- display:flex;
- align-items:center;
- justify-content:space-between;
-
- border-bottom:1px solid rgba(255,255,255,.06);
- position:relative;
-}
-
-
-/* LOGO ONLY */
-
-.brand{
- display:flex;
- align-items:center;
- justify-content:center;
-}
-
-.brand-logo{
- width:100px;
- height:100px;
- object-fit:contain;
- display:block;
-
- filter:drop-shadow(0 0 12px rgba(139,92,246,.35));
-
- transition:
- transform .35s ease,
- filter .35s ease;
-}
-
-.brand:hover .brand-logo{
- transform:rotate(-5deg) scale(1.08);
-
- filter:
- drop-shadow(0 0 20px rgba(34,211,238,.55));
-}
-
-
-.links{
- display:flex;
- gap:32px;
- color:#b7bfcc;
- font-size:14px;
-}
-
-.links a{
- transition:.2s;
- position:relative;
-}
-
-.links a:after{
- content:"";
- position:absolute;
- left:0;
- bottom:-8px;
- width:0;
- height:1px;
-
- background:
- linear-gradient(
-  90deg,
-  var(--accent),
-  var(--accent2)
- );
-
- transition:.25s;
-}
-
-.links a:hover{
- color:#fff;
-}
-
-.links a:hover:after{
- width:100%;
-}
-
-.navbtn{
- border:1px solid var(--line);
- padding:11px 17px;
- border-radius:10px;
- font-size:13px;
- background:#0d1015;
- transition:.25s;
-}
-
-.navbtn:hover{
- border-color:#596273;
- transform:translateY(-2px);
- box-shadow:0 8px 28px rgba(139,92,246,.12);
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
- min-height:760px;
-
- display:grid;
- grid-template-columns:1.15fr .85fr;
-
- gap:80px;
- align-items:center;
-}
-
-.eyebrow{
- color:#b7a1ff;
- font-size:13px;
- font-weight:700;
- letter-spacing:2px;
- text-transform:uppercase;
- margin-bottom:22px;
-}
-
-.hero h1{
- font:
- 700 clamp(52px,7vw,92px)/.98
- 'Space Grotesk',sans-serif;
-
- letter-spacing:-5px;
- max-width:850px;
-}
-
-.grad{
- background:
- linear-gradient(
-  100deg,
-  #fff 20%,
-  #b7a1ff 55%,
-  #6ee7f9
- );
-
- -webkit-background-clip:text;
- background-clip:text;
- color:transparent;
-}
-
-.hero p{
- color:var(--muted);
- font-size:19px;
- max-width:700px;
- margin:30px 0;
-}
-
-.actions{
- display:flex;
- gap:13px;
- flex-wrap:wrap;
-}
-
-.btn{
- padding:14px 21px;
- border-radius:11px;
-
- font-weight:700;
- font-size:14px;
-
- border:1px solid var(--line);
-
- display:inline-flex;
- align-items:center;
- gap:8px;
-
- transition:.25s;
-}
-
-.primary{
- background:#fff;
- color:#090a0d;
- border-color:#fff;
-}
-
-.primary:hover{
- transform:translateY(-3px);
- box-shadow:0 12px 30px rgba(255,255,255,.12);
-}
-
-.ghost:hover{
- border-color:#596273;
- transform:translateY(-2px);
-}
-
-
-/* =========================
-   HERO CODE VISUAL
-========================= */
-
-.visual{
- position:relative;
- min-height:430px;
-}
-
-.orb{
- position:absolute;
- inset:30px 0 10px 25px;
-
- border-radius:38px;
- border:1px solid #2a303a;
-
- background:
- linear-gradient(
-  145deg,
-  #11151d,
-  #090b0f
- );
-
- box-shadow:
- 0 30px 100px rgba(0,0,0,.45);
-
- overflow:hidden;
-
- transition:
- transform .18s ease-out;
-}
-
-.orb:before{
- content:'';
-
- position:absolute;
-
- width:320px;
- height:320px;
-
- border-radius:50%;
-
- background:
- radial-gradient(
-  circle,
-  rgba(139,92,246,.65),
-  transparent 65%
- );
-
- top:-90px;
- right:-70px;
-
- filter:blur(4px);
-}
-
-.orb:after{
- content:'</>';
-
- position:absolute;
-
- font:
- 800 200px
- 'Space Grotesk',sans-serif;
-
- color:rgba(255,255,255,.035);
-
- right:15px;
- bottom:-45px;
-}
-
-.code{
- position:absolute;
-
- left:35px;
- top:48px;
- right:35px;
-
- background:#080a0e;
-
- border:1px solid #252b34;
-
- border-radius:17px;
-
- padding:27px;
-
- font:
- 500 13px/2.15
- ui-monospace,
- SFMono-Regular,
- monospace;
-
- color:#aeb8c8;
-
- box-shadow:
- 0 20px 50px rgba(0,0,0,.4);
-}
-
-.code b{
- color:#c4b5fd;
-}
-
-.code i{
- color:#67e8f9;
- font-style:normal;
-}
-
-.code em{
- color:#86efac;
- font-style:normal;
-}
-
-
-/* =========================
-   SECTIONS
-========================= */
-
-section{
- padding:115px 0;
-}
-
-.sectionhead{
- display:flex;
- justify-content:space-between;
- align-items:end;
-
- gap:40px;
- margin-bottom:48px;
-}
-
-.kicker{
- color:#8d98a8;
- font-size:13px;
- text-transform:uppercase;
- letter-spacing:2px;
-}
-
-.sectionhead h2{
- font:
- 700 46px
- 'Space Grotesk',sans-serif;
-
- letter-spacing:-2px;
- margin-top:9px;
-}
-
-.sectionhead p{
- max-width:550px;
- color:var(--muted);
-}
-
-
-/* =========================
-   ABOUT
-========================= */
-
-.about{
- display:grid;
- grid-template-columns:.75fr 1.25fr;
- gap:80px;
-}
-
-.about-card,
-.skill,
-.project,
-.contactbox,
-.service,
-.contact-info,
-.contact-form{
- background:
- linear-gradient(
-  145deg,
-  rgba(255,255,255,.045),
-  rgba(255,255,255,.015)
- );
-
- border:1px solid var(--line);
- border-radius:20px;
-}
-
-.about-card{
- padding:34px;
-}
-
-.stat{
- display:flex;
- justify-content:space-between;
- align-items:center;
-
- padding:21px 0;
-
- border-bottom:1px solid var(--line);
-}
-
-.stat:last-child{
- border:0;
-}
-
-.stat strong{
- font:
- 700 30px
- 'Space Grotesk',sans-serif;
-}
-
-.stat span{
- color:var(--muted);
- font-size:13px;
-}
-
-.about-copy{
- color:#bac2cf;
- font-size:18px;
-}
-
-.about-copy p+p{
- margin-top:22px;
-}
-
-
-/* =========================
-   SERVICES
-========================= */
-
-.services{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:18px;
-}
-
-.service{
- padding:30px;
- min-height:220px;
- transition:.25s;
-}
-
-.service:hover{
- transform:translateY(-6px);
- border-color:#394352;
-
- box-shadow:
- 0 20px 45px rgba(0,0,0,.2);
-}
-
-.service-number{
- color:#8b5cf6;
- font-size:12px;
- font-weight:700;
- letter-spacing:1px;
-}
-
-.service-icon{
- font-size:28px;
-}
-
-.service h3{
- font:
- 600 23px
- 'Space Grotesk',sans-serif;
-
- margin:20px 0 10px;
-}
-
-.service p{
- color:var(--muted);
- font-size:14px;
-}
-
-
-/* =========================
-   SKILLS
-========================= */
-
-.skills{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:16px;
-}
-
-.skill{
- padding:25px;
-}
-
-.skill h3{
- font-size:15px;
- margin-bottom:8px;
-}
-
-.skill p{
- font-size:13px;
- color:var(--muted);
-}
-
-.dot{
- width:8px;
- height:8px;
-
- border-radius:50%;
-
- background:var(--accent2);
-
- display:inline-block;
-
- margin-right:8px;
-
- box-shadow:
- 0 0 14px var(--accent2);
-}
-
-
-/* =========================
-   PROJECTS
-========================= */
-
-.projects{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:20px;
-}
-
-.project{
- padding:27px;
- min-height:330px;
-
- display:flex;
- flex-direction:column;
- justify-content:space-between;
-
- transition:.25s;
-
- transform-style:preserve-3d;
-}
-
-.project:hover{
- border-color:#46505e;
-
- box-shadow:
- 0 25px 60px rgba(0,0,0,.28);
-}
-
-.tag{
- display:inline-block;
-
- font-size:11px;
- color:#c8baff;
-
- border:1px solid #3b3158;
-
- padding:6px 10px;
-
- border-radius:999px;
-
- margin-bottom:20px;
-}
-
-.project h3{
- font:
- 600 25px
- 'Space Grotesk',sans-serif;
-
- margin-bottom:10px;
-}
-
-.project p{
- color:var(--muted);
- font-size:14px;
-}
-
-.project-bottom{
- display:flex;
- justify-content:space-between;
- align-items:center;
-
- margin-top:25px;
-}
-
-.project-link{
- color:#a78bfa;
-
- font-size:13px;
- font-weight:700;
-
- transition:.2s;
-}
-
-.project-link:hover{
- color:#fff;
- transform:translateX(3px);
-}
-
-.arrow{
- font-size:24px;
- color:#a78bfa;
-}
-
-
-/* =========================
-   CONTACT
-========================= */
-
-.contact-layout{
- display:grid;
- grid-template-columns:.65fr 1.35fr;
- gap:22px;
-}
-
-.contact-info{
- padding:32px;
-}
-
-.contact-item{
- padding:22px 0;
- border-bottom:1px solid var(--line);
-}
-
-.contact-item:last-child{
- border-bottom:0;
-}
-
-.contact-item span{
- display:block;
-
- color:#7f8998;
-
- font-size:11px;
-
- letter-spacing:1.5px;
-
- font-weight:700;
-
- margin-bottom:8px;
-}
-
-.contact-item a{
- color:#c4b5fd;
-
- font-weight:600;
-
- word-break:break-word;
-}
-
-.contact-item strong{
- font-size:15px;
-}
-
-.contact-form{
- padding:32px;
-}
-
-.form-row{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:16px;
-}
-
-.field{
- margin-bottom:18px;
-}
-
-.field label{
- display:block;
-
- color:#c7ced9;
-
- font-size:13px;
- font-weight:600;
-
- margin-bottom:8px;
-}
-
-.field input,
-.field textarea{
- width:100%;
-
- border:1px solid #252c36;
-
- background:#080a0e;
-
- color:#fff;
-
- border-radius:11px;
-
- padding:14px 15px;
-
- font:
- 14px Inter,sans-serif;
-
- outline:none;
-
- transition:.2s;
-}
-
-.field input::placeholder,
-.field textarea::placeholder{
- color:#687181;
-}
-
-.field input:focus,
-.field textarea:focus{
- border-color:#8b5cf6;
-
- box-shadow:
- 0 0 0 3px rgba(139,92,246,.10);
-}
-
-.field textarea{
- resize:vertical;
- min-height:145px;
-}
-
-.submit-btn{
- border:0;
-
- background:#fff;
-
- color:#08090c;
-
- padding:14px 21px;
-
- border-radius:11px;
-
- font:
- 700 14px Inter,sans-serif;
+/* FOOTER */
+footer{padding:28px 0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.footer-inner{display:flex;justify-content:space-between;gap:20px}
 
- cursor:pointer;
-
- transition:.25s;
-}
-
-.submit-btn span{
- margin-left:7px;
-}
-
-.submit-btn:hover{
- transform:translateY(-3px);
-
- box-shadow:
- 0 12px 30px rgba(255,255,255,.12);
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
- border-top:1px solid var(--line);
-
- padding:30px 0;
-
- color:#77808f;
-
- font-size:13px;
-
- display:flex;
- justify-content:space-between;
-}
-
-
-/* =========================
-   SCROLL REVEAL
-========================= */
-
-.reveal{
- opacity:0;
-
- transform:translateY(28px);
-
- transition:
- opacity .75s ease,
- transform .75s ease;
-}
-
-.reveal.visible{
- opacity:1;
- transform:none;
-}
-
-.service,
-.skill,
-.project,
-.about-card,
-.contact-info,
-.contact-form{
- will-change:transform;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:950px){
-
- .links{
-  display:none;
- }
-
- .hero{
-  grid-template-columns:1fr;
-
-  min-height:auto;
-
-  padding:100px 0 80px;
- }
-
- .visual{
-  display:none;
- }
-
- .about{
-  grid-template-columns:1fr;
-  gap:30px;
- }
-
- .services{
-  grid-template-columns:repeat(2,1fr);
- }
-
- .skills{
-  grid-template-columns:repeat(2,1fr);
- }
-
- .projects{
-  grid-template-columns:repeat(2,1fr);
- }
-
- .contact-layout{
-  grid-template-columns:1fr;
- }
-
- .sectionhead{
-  display:block;
- }
-
- .sectionhead p{
-  margin-top:16px;
- }
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:900px){
+ .hero,.about-grid{grid-template-columns:1fr}.hero{padding-top:50px}.hero-art{height:420px;max-width:600px;width:100%}.services-grid{grid-template-columns:repeat(2,1fr)}.contact-box{grid-template-columns:1fr}.nav-links{display:none}
 }
-
-
 @media(max-width:600px){
-
- .wrap{
-  padding:0 18px;
- }
-
- .nav{
-  height:70px;
- }
-
- .brand-logo{
-  width:43px;
-  height:43px;
- }
-
- .navbtn{
-  padding:9px 12px;
- }
-
- .hero{
-  padding:80px 0 65px;
- }
-
- .hero h1{
-  font-size:48px;
-  letter-spacing:-2.8px;
- }
-
- .hero p{
-  font-size:16px;
-  margin:23px 0;
- }
-
- section{
-  padding:78px 0;
- }
-
- .sectionhead h2{
-  font-size:35px;
- }
-
- .services,
- .skills,
- .projects{
-  grid-template-columns:1fr;
- }
-
- .service{
-  min-height:auto;
- }
-
- .project{
-  min-height:280px;
- }
-
- .contact-info,
- .contact-form{
-  padding:24px;
- }
-
- .form-row{
-  grid-template-columns:1fr;
-  gap:0;
- }
-
- .footer{
-  flex-direction:column;
-  gap:10px;
- }
+ .wrap{width:min(100% - 32px,1180px)}header{padding-top:14px}.nav-cta{padding:10px 14px}.hero h1{letter-spacing:-2px}.hero-art{height:340px}.shape-main{inset:25px 10px 20px 20px}.card-two{right:-5px;top:20px}.services-grid{grid-template-columns:1fr}.about-stats{grid-template-columns:1fr 1fr}.projects-intro{display:block}.projects-intro p{margin-top:20px}.contact-box{padding:38px 28px}.footer-inner{flex-direction:column}.section-title{letter-spacing:-1px}
 }
-
 </style>
 </head>
-
-
 <body>
 
-<!-- ANIMATED CURSOR -->
-
-<div class="cursor-dot"></div>
-<div class="cursor-ring"></div>
-
-
-<!-- =========================
-     HEADER
-========================= -->
+<div class="loader"><span>MN.</span></div>
+<div class="cursor"></div><div class="cursor-dot"></div>
 
 <header>
-
-<div class="wrap nav">
-
-<!-- LOGO ONLY -->
-
-<a
- class="brand"
- href="#top"
- aria-label="Sohail Ahmed home"
->
-
-<img
- class="brand-logo"
- src="logo-sp.png"
- alt="Sohail Ahmed logo"
->
-
-</a>
-
-
-<nav class="links">
-
-<a href="#about">About</a>
-
-<a href="#services">Services</a>
-
-<a href="#skills">Skills</a>
-
-<a href="#projects">Projects</a>
-
-<a href="#contact">Contact</a>
-
-</nav>
-
-
-<a
- class="navbtn"
- href="#contact"
->
-Let's talk ↗
-</a>
-
-</div>
-
+ <div class="wrap nav">
+   <a class="logo" href="#top">Makhdoom<i>.</i></a>
+   <nav class="nav-links">
+     <a href="#about">About</a><a href="#services">Services</a><a href="#skills">Skills</a><a href="#projects">Work</a>
+   </nav>
+   <a class="nav-cta" href="#contact">Let's Talk ↗</a>
+ </div>
 </header>
 
-
 <main id="top">
+<section class="wrap hero">
+ <div class="reveal">
+   <div class="hero-tag"><b></b> Available for selected projects</div>
+   <h1>Building websites with <em>purpose</em> & personality.</h1>
+   <p>I'm <strong>Makhdoom Nawz</strong>, a web developer creating modern WordPress, business, eCommerce and custom front-end experiences that look refined and work beautifully.</p>
+   <div class="hero-actions">
+     <a href="#projects" class="btn btn-main">Explore My Work ↘</a>
+     <a href="#contact" class="btn btn-alt">Start a Project</a>
+   </div>
+ </div>
+ <div class="hero-art reveal">
+   <div class="shape-main"></div>
+   <div class="floating-card card-one"><small>FOCUS</small><strong>Creative Development</strong><div class="mini-bars"><i></i><i></i><i></i><i></i></div></div>
+   <div class="floating-card card-two"><small>STACK</small><strong>WordPress + Front-End</strong></div>
+ </div>
+</section>
 
-
-<!-- =========================
-     HERO
-========================= -->
-
-<div class="wrap hero">
-
-<div class="reveal">
-
-<div class="eyebrow">
-Senior Web Developer · Pakistan
-</div>
-
-
-<h1>
-I build
-<span class="grad">
-modern digital experiences.
-</span>
-</h1>
-
-
-<p>
-Websites that look sharp, work smoothly, and turn ideas into real products —
-from business websites and WordPress builds to eCommerce experiences.
-</p>
-
-
-<div class="actions">
-
-<a
- class="btn primary"
- href="#projects"
->
-View my work ↓
-</a>
-
-
-<a
- class="btn ghost"
- href="#contact"
->
-Contact me
-</a>
-
-</div>
-
-</div>
-
-
-<div class="visual">
-
-<div
- class="orb"
- id="heroOrb"
->
-
-<div class="code">
-
-<span>// portfolio.config</span>
-<br>
-
-<b>const</b> developer = {
-<br>
-
-&nbsp;&nbsp;name:
-<i>'Sohail Ahmed'</i>,
-<br>
-
-&nbsp;&nbsp;role:
-<i>'Senior Web Developer'</i>,
-<br>
-
-&nbsp;&nbsp;focus:
-[
-<em>'Web'</em>,
-<em>'WordPress'</em>,
-<em>'eCommerce'</em>
-],
-<br>
-
-&nbsp;&nbsp;status:
-<em>'Available for projects'</em>
-<br>
-
-};
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<!-- =========================
-     ABOUT
-========================= -->
+<div class="marquee"><div class="marquee-track">WEB DEVELOPMENT <b>✦</b> WORDPRESS <b>✦</b> ELEMENTOR <b>✦</b> ECOMMERCE <b>✦</b> UI/UX <b>✦</b> CUSTOM FRONT-END <b>✦</b> WEB DEVELOPMENT <b>✦</b> WORDPRESS <b>✦</b> ELEMENTOR <b>✦</b> ECOMMERCE <b>✦</b> UI/UX <b>✦</b></div></div>
 
 <section id="about">
-
-<div class="wrap">
-
-
-<div class="sectionhead reveal">
-
-<div>
-
-<div class="kicker">
-01 / About
-</div>
-
-<h2>
-Developer with a builder mindset.
-</h2>
-
-</div>
-
-
-<p>
-I care about the details that make a site feel professional:
-structure, responsiveness, speed, interactions and a clean user journey.
-</p>
-
-</div>
-
-
-<div class="about">
-
-
-<div class="about-card reveal">
-
-<div class="stat">
-
-<strong>
-Senior
-</strong>
-
-<span>
-Current level
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<strong>
-20+
-</strong>
-
-<span>
-Web projects & builds
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<strong>
-100%
-</strong>
-
-<span>
-Responsive approach
-</span>
-
-</div>
-
-
-<div class="stat">
-
-<strong>
-24/7
-</strong>
-
-<span>
-Problem-solving mindset
-</span>
-
-</div>
-
-</div>
-
-
-<div class="about-copy reveal">
-
-<p>
-I’m a web developer focused on creating polished,
-conversion-friendly websites for businesses, services and online stores.
-</p>
-
-
-<p>
-My workflow blends design sense with practical development —
-building layouts in WordPress/Elementor, customizing front-end experiences
-with HTML, CSS and JavaScript, and shaping eCommerce flows around the customer.
-</p>
-
-
-<p>
-Now I’m pushing toward bigger products, stronger architecture
-and lead-level ownership.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
+ <div class="wrap about-grid">
+  <div class="reveal"><div class="section-label">01 — About Me</div><div class="big-number">MN</div>
+   <div class="about-stats">
+    <div class="stat-box"><strong>20+</strong><span>Projects & Builds</span></div>
+    <div class="stat-box"><strong>100%</strong><span>Responsive Focus</span></div>
+   </div>
+  </div>
+  <div class="reveal">
+   <h2 class="section-title">A developer who cares about the details.</h2>
+   <p class="section-copy">I combine visual thinking with practical development to create websites that feel professional, easy to use and aligned with real business goals. From first structure to final interaction, I focus on the complete experience.</p>
+   <div class="skill-pills"><span class="pill">HTML / CSS</span><span class="pill">JavaScript</span><span class="pill">WordPress</span><span class="pill">Elementor</span><span class="pill">WooCommerce</span><span class="pill">Responsive UI</span></div>
+  </div>
+ </div>
 </section>
-
-
-<!-- =========================
-     SERVICES
-========================= -->
 
 <section id="services">
-
-<div class="wrap">
-
-
-<div class="sectionhead reveal">
-
-<div>
-
-<div class="kicker">
-02 / Services
-</div>
-
-<h2>
-What I can build for you.
-</h2>
-
-</div>
-
-
-<p>
-From complete websites to detailed front-end customization,
-I build digital experiences around the needs of each project.
-</p>
-
-</div>
-
-
-<div class="services">
-
-
-<div class="service reveal">
-
-<div class="service-icon">
-🌐
-</div>
-
-<div class="service-number">
-01
-</div>
-
-<h3>
-Website Development
-</h3>
-
-<p>
-Modern, responsive and professional websites for businesses,
-services and personal brands.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="service-icon">
-🎨
-</div>
-
-<div class="service-number">
-02
-</div>
-
-<h3>
-WordPress & Elementor
-</h3>
-
-<p>
-Custom WordPress websites, Elementor layouts,
-headers, menus, sections and responsive designs.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="service-icon">
-🛒
-</div>
-
-<div class="service-number">
-03
-</div>
-
-<h3>
-WooCommerce & eCommerce
-</h3>
-
-<p>
-Product stores, product pages, checkout experiences,
-custom shopping flows and eCommerce UI.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="service-icon">
-💻
-</div>
-
-<div class="service-number">
-04
-</div>
-
-<h3>
-Custom Front-End
-</h3>
-
-<p>
-HTML, CSS and JavaScript interfaces with custom
-components, interactions and animations.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="service-icon">
-📱
-</div>
-
-<div class="service-number">
-05
-</div>
-
-<h3>
-Responsive Web Design
-</h3>
-
-<p>
-Layouts carefully optimized for desktop,
-tablet and mobile devices.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="service-icon">
-⚡
-</div>
-
-<div class="service-number">
-06
-</div>
-
-<h3>
-Website Fixes & Optimization
-</h3>
-
-<p>
-Responsive issues, UI problems, styling,
-layout bugs and front-end improvements.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="service-icon">
-🔧
-</div>
-
-<div class="service-number">
-07
-</div>
-
-<h3>
-Website Customization
-</h3>
-
-<p>
-Custom sections, sliders, menus, buttons,
-product layouts and advanced styling.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="service-icon">
-📈
-</div>
-
-<div class="service-number">
-08
-</div>
-
-<h3>
-Conversion-Focused UX
-</h3>
-
-<p>
-Clear user journeys, strong calls-to-action
-and interfaces designed around business goals.
-</p>
-
-</div>
-
-
-<div class="service reveal">
-
-<div class="service-icon">
-🧩
-</div>
-
-<div class="service-number">
-09
-</div>
-
-<h3>
-Business Web Solutions
-</h3>
-
-<p>
-Complete digital experiences combining design,
-development and practical business functionality.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
+ <div class="wrap">
+  <div class="reveal"><div class="section-label">02 — What I Do</div><h2 class="section-title">Digital experiences built around your goals.</h2></div>
+  <div class="services-grid">
+   <article class="service reveal"><div class="service-num">01 / WEB</div><h3>Website Development</h3><p>Professional websites for businesses, services, startups and personal brands.</p><span class="service-arrow">↗</span></article>
+   <article class="service reveal"><div class="service-num">02 / WP</div><h3>WordPress & Elementor</h3><p>Custom layouts, advanced sections, responsive pages and complete WordPress builds.</p><span class="service-arrow">↗</span></article>
+   <article class="service reveal"><div class="service-num">03 / SHOP</div><h3>eCommerce Solutions</h3><p>WooCommerce stores, product experiences and conversion-focused customer journeys.</p><span class="service-arrow">↗</span></article>
+   <article class="service reveal"><div class="service-num">04 / CODE</div><h3>Custom Front-End</h3><p>HTML, CSS and JavaScript interfaces with polished interactions and animations.</p><span class="service-arrow">↗</span></article>
+   <article class="service reveal"><div class="service-num">05 / UI</div><h3>Website Redesign</h3><p>Transforming outdated websites into modern, cleaner and stronger digital experiences.</p><span class="service-arrow">↗</span></article>
+   <article class="service reveal"><div class="service-num">06 / FIX</div><h3>Optimization & Fixes</h3><p>Responsive issues, layout problems, styling bugs and front-end improvements.</p><span class="service-arrow">↗</span></article>
+  </div>
+ </div>
 </section>
 
-
-<!-- =========================
-     SKILLS
-========================= -->
-
-<section id="skills">
-
-<div class="wrap">
-
-
-<div class="sectionhead reveal">
-
-<div>
-
-<div class="kicker">
-03 / Skills
-</div>
-
-<h2>
-Tools I use to ship.
-</h2>
-
-</div>
-
-</div>
-
-
-<div class="skills">
-
-
-<div class="skill reveal">
-
-<h3>
-<span class="dot"></span>
-HTML / CSS
-</h3>
-
-<p>
-Responsive layouts, animations and clean UI systems.
-</p>
-
-</div>
-
-
-<div class="skill reveal">
-
-<h3>
-<span class="dot"></span>
-JavaScript
-</h3>
-
-<p>
-Interactions, dynamic components and front-end logic.
-</p>
-
-</div>
-
-
-<div class="skill reveal">
-
-<h3>
-<span class="dot"></span>
-WordPress
-</h3>
-
-<p>
-Elementor, WooCommerce, custom styling and builds.
-</p>
-
-</div>
-
-
-<div class="skill reveal">
-
-<h3>
-<span class="dot"></span>
-eCommerce
-</h3>
-
-<p>
-Product pages, checkout flows and conversion-focused UX.
-</p>
-
-</div>
-
-
-</div>
-
-</div>
-
+<section class="tech-section" id="skills">
+ <div class="wrap">
+  <div class="reveal"><div class="section-label" style="color:var(--lime)">03 — Skills & Tools</div><h2 class="section-title">The tools behind the work.</h2><p class="section-copy">A continuously evolving toolkit for building modern websites and digital interfaces.</p></div>
+  <div class="swiper techSwiper">
+   <div class="swiper-wrapper">
+    <div class="swiper-slide"><div class="tech-card"><div class="tech-icon">⌘</div><h3>HTML & CSS</h3><p>Clean layouts, responsive systems and advanced visual styling.</p></div></div>
+    <div class="swiper-slide"><div class="tech-card"><div class="tech-icon">⚡</div><h3>JavaScript</h3><p>Interactive components, animations and dynamic front-end behavior.</p></div></div>
+    <div class="swiper-slide"><div class="tech-card"><div class="tech-icon">W</div><h3>WordPress</h3><p>Custom websites, theme customization and flexible CMS solutions.</p></div></div>
+    <div class="swiper-slide"><div class="tech-card"><div class="tech-icon">◫</div><h3>Elementor</h3><p>Advanced page building, responsive design and custom styling.</p></div></div>
+    <div class="swiper-slide"><div class="tech-card"><div class="tech-icon">🛒</div><h3>WooCommerce</h3><p>Product stores, custom pages and better shopping experiences.</p></div></div>
+   </div><div class="swiper-pagination"></div>
+  </div>
+ </div>
 </section>
-
-
-<!-- =========================
-     PROJECTS
-========================= -->
 
 <section id="projects">
-
-<div class="wrap">
-
-
-<div class="sectionhead reveal">
-
-<div>
-
-<div class="kicker">
-04 / Selected Work
-</div>
-
-<h2>
-Projects I've built.
-</h2>
-
-</div>
-
-
-<p>
-A selection of live websites and web experiences
-showing different areas of my development work.
-</p>
-
-</div>
-
-
-<div class="projects">
-
-
-<!-- GOHAR -->
-
-<article class="project reveal">
-
-<div>
-
-<span class="tag">
-Healthcare · WordPress
-</span>
-
-<h3>
-Gohar Medical Complex
-</h3>
-
-<p>
-Professional healthcare website designed around
-services, trust, clear information and responsive UX.
-</p>
-
-</div>
-
-
-<div class="project-bottom">
-
-<a
- class="project-link"
- href="https://goharmedicalcomplex.com/"
- target="_blank"
- rel="noopener noreferrer"
->
-Visit Website ↗
-</a>
-
-<span class="arrow">
-↗
-</span>
-
-</div>
-
-</article>
-
-
-<!-- PROJECT 2 -->
-
-<article class="project reveal">
-
-<div>
-
-<span class="tag">
-Business Website
-</span>
-
-<h3>
-Business Website
-</h3>
-
-<p>
-Responsive business website with a clean structure,
-professional sections and modern presentation.
-</p>
-
-</div>
-
-
-<div class="project-bottom">
-
-<a
- class="project-link"
- href="https://yellowgreen-mouse-779100.hostingersite.com/"
- target="_blank"
- rel="noopener noreferrer"
->
-Visit Website ↗
-</a>
-
-<span class="arrow">
-↗
-</span>
-
-</div>
-
-</article>
-
-
-<!-- PROJECT 3 -->
-
-<article class="project reveal">
-
-<div>
-
-<span class="tag">
-Web Development
-</span>
-
-<h3>
-Modern Web Experience
-</h3>
-
-<p>
-Custom responsive website focused on clean layouts,
-user experience and modern front-end presentation.
-</p>
-
-</div>
-
-
-<div class="project-bottom">
-
-<a
- class="project-link"
- href="https://palegoldenrod-snail-961317.hostingersite.com/"
- target="_blank"
- rel="noopener noreferrer"
->
-Visit Website ↗
-</a>
-
-<span class="arrow">
-↗
-</span>
-
-</div>
-
-</article>
-
-
-<!-- PROJECT 4 -->
-
-<article class="project reveal">
-
-<div>
-
-<span class="tag">
-WordPress · Responsive
-</span>
-
-<h3>
-Responsive Website
-</h3>
-
-<p>
-Modern responsive build with structured sections,
-custom styling and mobile-friendly presentation.
-</p>
-
-</div>
-
-
-<div class="project-bottom">
-
-<a
- class="project-link"
- href="https://peachpuff-louse-449337.hostingersite.com/"
- target="_blank"
- rel="noopener noreferrer"
->
-Visit Website ↗
-</a>
-
-<span class="arrow">
-↗
-</span>
-
-</div>
-
-</article>
-
-
-<!-- RAMSUM -->
-
-<article class="project reveal">
-
-<div>
-
-<span class="tag">
-Business · Australia
-</span>
-
-<h3>
-RAMSUM
-</h3>
-
-<p>
-Professional business website with a clean,
-modern interface and responsive layout.
-</p>
-
-</div>
-
-
-<div class="project-bottom">
-
-<a
- class="project-link"
- href="https://ramsum.com.au/"
- target="_blank"
- rel="noopener noreferrer"
->
-Visit Website ↗
-</a>
-
-<span class="arrow">
-↗
-</span>
-
-</div>
-
-</article>
-
-
-<!-- AMRO -->
-
-<article class="project reveal">
-
-<div>
-
-<span class="tag">
-Healthcare · Services
-</span>
-
-<h3>
-Amro Healthcare
-</h3>
-
-<p>
-Healthcare services website focused on professional
-presentation, services and lead generation.
-</p>
-
-</div>
-
-
-<div class="project-bottom">
-
-<a
- class="project-link"
- href="https://amrohealthcare.com/"
- target="_blank"
- rel="noopener noreferrer"
->
-Visit Website ↗
-</a>
-
-<span class="arrow">
-↗
-</span>
-
-</div>
-
-</article>
-
-
-<!-- VEHICLE -->
-
-<article class="project reveal">
-
-<div>
-
-<span class="tag">
-Automotive · Web App
-</span>
-
-<h3>
-Vehicle Inspect Check
-</h3>
-
-<p>
-Vehicle reporting experience with package-based
-purchasing and a streamlined customer journey.
-</p>
-
-</div>
-
-
-<div class="project-bottom">
-
-<a
- class="project-link"
- href="https://www.vehicleinspectcheck.com/"
- target="_blank"
- rel="noopener noreferrer"
->
-Visit Website ↗
-</a>
-
-<span class="arrow">
-↗
-</span>
-
-</div>
-
-</article>
-
-
-</div>
-
-</div>
-
+ <div class="wrap">
+  <div class="projects-intro reveal"><div><div class="section-label">04 — Selected Portfolio</div><h2 class="section-title">A few things I've brought to life.</h2></div><p>Live websites across healthcare, cloud services, marketing, business and custom web experiences.</p></div>
+  <div class="swiper project-slider">
+   <div class="swiper-wrapper">
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual"></div><span class="project-meta">Healthcare · Website</span><h3>Gohar Medical Complex</h3><p>Professional healthcare website focused on trust, services and clear information architecture.</p><a href="https://goharmedicalcomplex.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual orange"></div><span class="project-meta">Cloud · Business</span><h3>Secure Cloud LLC</h3><p>A modern business web experience for cloud and technology-focused services.</p><a href="https://securecloud-llc.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual lime"></div><span class="project-meta">Marketing · Brand</span><h3>Your Future CMO</h3><p>A digital marketing and growth-focused web presence with a professional presentation.</p><a href="https://yourfuturecmo.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual sand"></div><span class="project-meta">Business · WordPress</span><h3>One Strong Broadband</h3><p>A service-oriented website designed around clear offerings and customer action.</p><a href="https://golink.1onestrong.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual orange"></div><span class="project-meta">Custom Website</span><h3>Rajput Papa</h3><p>A unique web project showcasing flexible front-end implementation and custom presentation.</p><a href="https://rajputpapa.ct.ws/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual lime"></div><span class="project-meta">Portfolio Project</span><h3>Modern Web Project</h3><p>Responsive website experience built with contemporary layouts and visual hierarchy.</p><a href="https://yellowgreen-walrus-916850.hostingersite.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual sand"></div><span class="project-meta">Web Development</span><h3>Creative Digital Build</h3><p>A live web project demonstrating modern design, responsiveness and development work.</p><a href="https://lightgrey-aardvark-162641.hostingersite.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+   </div>
+   <div class="swiper-pagination"></div>
+  </div>
+ </div>
 </section>
-
-
-<!-- =========================
-     CONTACT
-========================= -->
 
 <section id="contact">
-
-<div class="wrap">
-
-
-<div class="sectionhead reveal">
-
-<div>
-
-<div class="kicker">
-05 / Contact
-</div>
-
-<h2>
-Let's work together.
-</h2>
-
-</div>
-
-
-<p>
-Have a project, website or idea in mind?
-Send me a message and I'll get back to you.
-</p>
-
-</div>
-
-
-<div class="contact-layout">
-
-
-<!-- CONTACT INFORMATION -->
-
-<div class="contact-info reveal">
-
-<div class="contact-item">
-
-<span>
-EMAIL
-</span>
-
-<a href="mailto:sohailwork343@gmail.com">
-sohailwork343@gmail.com
-</a>
-
-</div>
-
-
-<div class="contact-item">
-
-<span>
-AVAILABILITY
-</span>
-
-<strong>
-Available for projects
-</strong>
-
-</div>
-
-
-<div class="contact-item">
-
-<span>
-ROLE
-</span>
-
-<strong>
-Senior Web Developer
-</strong>
-
-</div>
-
-
-<div class="contact-item">
-
-<span>
-LOCATION
-</span>
-
-<strong>
-Pakistan · Remote
-</strong>
-
-</div>
-
-</div>
-
-
-<!-- CONTACT FORM -->
-
-<form
- class="contact-form reveal"
- action="https://formsubmit.co/sohailwork343@gmail.com"
- method="POST"
->
-
-<input
- type="hidden"
- name="_subject"
- value="New Portfolio Project Inquiry — Sohail Ahmed"
->
-
-<input
- type="hidden"
- name="_captcha"
- value="false"
->
-
-<input
- type="hidden"
- name="_template"
- value="table"
->
-
-
-<div class="form-row">
-
-
-<div class="field">
-
-<label for="name">
-Your Name
-</label>
-
-<input
- type="text"
- id="name"
- name="name"
- placeholder="Enter your name"
- autocomplete="name"
- required
->
-
-</div>
-
-
-<div class="field">
-
-<label for="email">
-Email Address
-</label>
-
-<input
- type="email"
- id="email"
- name="email"
- placeholder="you@example.com"
- autocomplete="email"
- required
->
-
-</div>
-
-
-</div>
-
-
-<div class="field">
-
-<label for="project">
-Project / Subject
-</label>
-
-<input
- type="text"
- id="project"
- name="project"
- placeholder="What do you need help with?"
- required
->
-
-</div>
-
-
-<div class="field">
-
-<label for="message">
-Message
-</label>
-
-<textarea
- id="message"
- name="message"
- rows="6"
- placeholder="Tell me about your project..."
- required
-></textarea>
-
-</div>
-
-
-<button
- type="submit"
- class="submit-btn"
->
-Send Message
-<span>↗</span>
-</button>
-
-</form>
-
-</div>
-
-</div>
-
+ <div class="wrap reveal">
+  <div class="section-label">05 — Contact</div>
+  <div class="contact-box">
+   <div><h2>Have an idea? Let's make it work.</h2><p>Email me directly and let's discuss your next website or digital project.</p></div>
+   <a class="contact-button" href="mailto:makhdoomwork343@gmail.com">makhdoomwork343@gmail.com ↗</a>
+  </div>
+ </div>
 </section>
-
-
 </main>
 
+<footer><div class="wrap footer-inner"><span>© 2026 Makhdoom Nawz. All rights reserved.</span><span>Web Developer · WordPress · Front-End</span></div></footer>
 
-<!-- =========================
-     FOOTER
-========================= -->
-
-<footer>
-
-<div class="wrap footer">
-
-<span>
-© 2026 Sohail Ahmed. Built with intent.
-</span>
-
-<span>
-Senior Web Developer · Open to opportunities
-</span>
-
-</div>
-
-</footer>
-
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+window.addEventListener('load',()=>setTimeout(()=>document.querySelector('.loader').classList.add('hide'),500));
 
-/* =========================
-   SCROLL REVEAL
-========================= */
-
-const revealObserver =
-new IntersectionObserver(
- entries => {
-
-  entries.forEach(e => {
-
-   if(e.isIntersecting){
-
-    e.target.classList.add('visible');
-
-    revealObserver.unobserve(e.target);
-
-   }
-
-  });
-
- },
- {
-  threshold:.12
- }
-);
-
-
-document
-.querySelectorAll('.reveal')
-.forEach(el =>
- revealObserver.observe(el)
-);
-
-
-/* =========================
-   PREMIUM CURSOR
-========================= */
-
-const dot =
-document.querySelector('.cursor-dot');
-
-const ring =
-document.querySelector('.cursor-ring');
-
-
-let mx = innerWidth / 2;
-let my = innerHeight / 2;
-
-let rx = mx;
-let ry = my;
-
-
-addEventListener(
- 'mousemove',
- e => {
-
-  mx = e.clientX;
-  my = e.clientY;
-
-  dot.style.left = mx + 'px';
-  dot.style.top = my + 'px';
-
-  dot.style.opacity = 1;
-  ring.style.opacity = 1;
-
- }
-);
-
-
-(function cursorLoop(){
-
- rx += (mx - rx) * .16;
- ry += (my - ry) * .16;
-
- ring.style.left = rx + 'px';
- ring.style.top = ry + 'px';
-
- requestAnimationFrame(cursorLoop);
-
-})();
-
-
-document
-.querySelectorAll(
- 'a,button,input,textarea'
-)
-.forEach(el => {
-
- el.addEventListener(
-  'mouseenter',
-  () => ring.classList.add('active')
- );
-
- el.addEventListener(
-  'mouseleave',
-  () => ring.classList.remove('active')
- );
-
+const cursor=document.querySelector('.cursor'), dot=document.querySelector('.cursor-dot');
+let mx=0,my=0,cx=0,cy=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+(function animateCursor(){cx+=(mx-cx)*.16;cy+=(my-cy)*.16;cursor.style.left=cx+'px';cursor.style.top=cy+'px';requestAnimationFrame(animateCursor)})();
+document.querySelectorAll('a,button,.service,.project-card,.tech-card').forEach(el=>{
+ el.addEventListener('mouseenter',()=>cursor.classList.add('big'));
+ el.addEventListener('mouseleave',()=>cursor.classList.remove('big'));
 });
 
+const observer=new IntersectionObserver(entries=>entries.forEach((entry,i)=>{if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-/* =========================
-   HERO MOUSE PARALLAX
-========================= */
-
-const orb =
-document.getElementById('heroOrb');
-
-
-if(
- orb &&
- matchMedia('(pointer:fine)').matches
-){
-
- document.addEventListener(
-  'mousemove',
-  e => {
-
-   const x =
-   (e.clientX / innerWidth - .5) * 14;
-
-   const y =
-   (e.clientY / innerHeight - .5) * 10;
-
-   orb.style.transform =
-   `translate3d(${x}px,${y}px,0)`;
-
-  }
- );
-
-}
-
-
-/* =========================
-   SUBTLE 3D CARD TILT
-========================= */
-
-if(
- matchMedia('(pointer:fine)').matches
-){
-
- document
- .querySelectorAll(
-  '.project,.service,.skill,.about-card,.contact-info,.contact-form'
- )
- .forEach(card => {
-
-  card.addEventListener(
-   'mousemove',
-   e => {
-
-    const r =
-    card.getBoundingClientRect();
-
-    const x =
-    e.clientX - r.left;
-
-    const y =
-    e.clientY - r.top;
-
-    const ry =
-    (x / r.width - .5) * 5;
-
-    const rx =
-    (y / r.height - .5) * -5;
-
-    card.style.transform =
-    `perspective(900px)
-     rotateX(${rx}deg)
-     rotateY(${ry}deg)
-     translateY(-3px)`;
-
-   }
-  );
-
-
-  card.addEventListener(
-   'mouseleave',
-   () => {
-
-    card.style.transform = '';
-
-   }
-  );
-
- });
-
-}
-
+new Swiper('.techSwiper',{
+ slidesPerView:1.2,spaceBetween:16,loop:true,autoplay:{delay:2800,disableOnInteraction:false},
+ pagination:{el:'.techSwiper .swiper-pagination',clickable:true},
+ breakpoints:{650:{slidesPerView:2.2},900:{slidesPerView:3.2}}
+});
+new Swiper('.project-slider',{
+ slidesPerView:1.08,spaceBetween:18,loop:true,autoplay:{delay:3500,disableOnInteraction:false},
+ pagination:{el:'.project-slider .swiper-pagination',clickable:true},
+ breakpoints:{650:{slidesPerView:2},950:{slidesPerView:3}}
+});
 </script>
-
 </body>
 </html>
