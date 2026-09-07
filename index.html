@@ -129,6 +129,29 @@ section{padding:120px 0}
 .contact-box h2{font:700 clamp(42px,5vw,70px)/1 'Playfair Display';max-width:650px}.contact-box p{margin-top:15px;color:rgba(255,255,255,.8)}
 .contact-button{background:#fff;color:var(--ink);padding:17px 25px;border-radius:999px;font-size:13px;font-weight:800;white-space:nowrap}
 
+
+/* CONTACT FORM */
+.contact-form-box{grid-template-columns:.85fr 1.15fr;align-items:start}
+.contact-details{margin-top:32px;font:500 11px 'DM Mono';letter-spacing:1px}
+.contact-details span{display:block;color:rgba(255,255,255,.65);margin-bottom:8px}
+.contact-details a{font:700 14px Manrope;color:#fff;letter-spacing:0}
+.portfolio-form{display:flex;flex-direction:column;gap:13px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.portfolio-form input,.portfolio-form textarea{
+ width:100%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);
+ color:#fff;padding:15px 16px;border-radius:12px;font:13px Manrope;outline:none;transition:.25s
+}
+.portfolio-form input::placeholder,.portfolio-form textarea::placeholder{color:rgba(255,255,255,.65)}
+.portfolio-form input:focus,.portfolio-form textarea:focus{background:rgba(255,255,255,.16);border-color:#fff}
+.portfolio-form textarea{min-height:130px;resize:vertical}
+.portfolio-form button{
+ border:0;background:#fff;color:var(--ink);padding:16px 22px;border-radius:999px;
+ font:800 13px Manrope;cursor:pointer;align-self:flex-start;transition:.3s
+}
+.portfolio-form button:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.18)}
+@media(max-width:900px){.contact-form-box{grid-template-columns:1fr}}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+
 /* FOOTER */
 footer{padding:28px 0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}.footer-inner{display:flex;justify-content:space-between;gap:20px}
 
@@ -140,6 +163,206 @@ footer{padding:28px 0;border-top:1px solid var(--line);font-size:12px;color:var(
 @media(max-width:600px){
  .wrap{width:min(100% - 32px,1180px)}header{padding-top:14px}.nav-cta{padding:10px 14px}.hero h1{letter-spacing:-2px}.hero-art{height:340px}.shape-main{inset:25px 10px 20px 20px}.card-two{right:-5px;top:20px}.services-grid{grid-template-columns:1fr}.about-stats{grid-template-columns:1fr 1fr}.projects-intro{display:block}.projects-intro p{margin-top:20px}.contact-box{padding:38px 28px}.footer-inner{flex-direction:column}.section-title{letter-spacing:-1px}
 }
+
+/* =====================================================
+   PROFESSIONAL CONTACT SECTION — FINAL FIX
+===================================================== */
+#contact{
+  padding-top:120px;
+  padding-bottom:120px;
+}
+
+.professional-contact{
+  margin-top:38px;
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:55px;
+  padding:60px;
+  border-radius:32px;
+  background:#173d32;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 25px 70px rgba(23,61,50,.16);
+}
+
+.professional-contact:before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  border-radius:50%;
+  background:rgba(200,240,90,.10);
+  top:-250px;
+  left:-180px;
+}
+
+.professional-contact:after{
+  content:"";
+  position:absolute;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.08);
+  right:-100px;
+  bottom:-100px;
+}
+
+.contact-content,
+.professional-form{
+  position:relative;
+  z-index:2;
+}
+
+.contact-kicker{
+  display:inline-block;
+  font:500 10px 'DM Mono',monospace;
+  letter-spacing:2px;
+  color:var(--lime);
+  margin-bottom:22px;
+}
+
+.contact-content h2{
+  font:700 clamp(38px,4vw,60px)/1.05 'Playfair Display',serif;
+  letter-spacing:-1.5px;
+  max-width:500px;
+}
+
+.contact-content p{
+  margin-top:20px;
+  max-width:460px;
+  color:rgba(255,255,255,.68);
+  font-size:15px;
+  line-height:1.8;
+}
+
+.contact-email-card{
+  margin-top:42px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.16);
+}
+
+.contact-email-card span{
+  display:block;
+  color:rgba(255,255,255,.48);
+  text-transform:uppercase;
+  font:500 10px 'DM Mono',monospace;
+  letter-spacing:1.5px;
+  margin-bottom:9px;
+}
+
+.contact-email-card a{
+  color:#fff;
+  font-size:14px;
+  font-weight:700;
+  word-break:break-word;
+  transition:.25s;
+}
+
+.contact-email-card a:hover{
+  color:var(--lime);
+}
+
+.professional-form{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:22px;
+  padding:28px;
+  backdrop-filter:blur(10px);
+}
+
+.form-row-pro{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.input-group{
+  margin-bottom:16px;
+}
+
+.input-group label{
+  display:block;
+  color:rgba(255,255,255,.82);
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+
+.input-group input,
+.input-group textarea{
+  display:block !important;
+  width:100% !important;
+  min-width:0;
+  border:1px solid rgba(255,255,255,.16) !important;
+  background:rgba(255,255,255,.08) !important;
+  color:#fff !important;
+  border-radius:10px !important;
+  padding:14px 15px !important;
+  font:13px Manrope,sans-serif !important;
+  outline:none !important;
+  box-shadow:none !important;
+  transition:border-color .25s,background .25s,transform .25s !important;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder{
+  color:rgba(255,255,255,.38) !important;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+  border-color:var(--lime) !important;
+  background:rgba(255,255,255,.12) !important;
+}
+
+.input-group textarea{
+  height:130px;
+  resize:vertical;
+}
+
+.professional-submit{
+  width:100%;
+  border:0;
+  background:var(--lime);
+  color:var(--ink);
+  border-radius:10px;
+  padding:16px 20px;
+  font:800 13px Manrope,sans-serif;
+  cursor:pointer;
+  transition:transform .25s,box-shadow .25s,background .25s;
+}
+
+.professional-submit span{
+  margin-left:8px;
+  font-size:16px;
+}
+
+.professional-submit:hover{
+  transform:translateY(-3px);
+  background:#d7ff69;
+  box-shadow:0 14px 30px rgba(0,0,0,.18);
+}
+
+@media(max-width:900px){
+  .professional-contact{
+    grid-template-columns:1fr;
+    gap:35px;
+    padding:42px;
+  }
+}
+
+@media(max-width:600px){
+  #contact{padding-top:80px;padding-bottom:80px}
+  .professional-contact{
+    padding:28px 20px;
+    border-radius:24px;
+  }
+  .professional-form{padding:20px 16px}
+  .form-row-pro{grid-template-columns:1fr;gap:0}
+  .contact-content h2{font-size:40px}
+}
+
 </style>
 </head>
 <body>
@@ -240,14 +463,118 @@ footer{padding:28px 0;border-top:1px solid var(--line);font-size:12px;color:var(
  </div>
 </section>
 
-<section id="contact">
- <div class="wrap reveal">
-  <div class="section-label">05 — Contact</div>
-  <div class="contact-box">
-   <div><h2>Have an idea? Let's make it work.</h2><p>Email me directly and let's discuss your next website or digital project.</p></div>
-   <a class="contact-button" href="mailto:makhdoomwork343@gmail.com">makhdoomwork343@gmail.com ↗</a>
+<section id="contact" style="padding:110px 0;">
+  <div class="wrap">
+    <div class="section-label">05 — CONTACT</div>
+
+    <div style="
+      margin-top:35px;
+      background:#173d32;
+      border-radius:30px;
+      padding:55px;
+      display:grid;
+      grid-template-columns:42% 58%;
+      gap:45px;
+      color:#ffffff;
+      box-shadow:0 25px 60px rgba(23,61,50,.18);
+    ">
+
+      <!-- LEFT CONTENT -->
+      <div style="padding:10px 15px 10px 0;">
+        <div style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;color:#c8f05a;margin-bottom:20px;">
+          START A PROJECT
+        </div>
+
+        <h2 style="
+          font-family:'Playfair Display',serif;
+          font-size:54px;
+          line-height:1.08;
+          letter-spacing:-1.5px;
+          margin:0 0 20px;
+          color:#ffffff;
+        ">Have an idea?<br>Let's make it work.</h2>
+
+        <p style="
+          font-size:15px;
+          line-height:1.8;
+          color:rgba(255,255,255,.72);
+          margin:0;
+          max-width:420px;
+        ">
+          Have a project, website or business idea in mind? Send me a message and I'll get back to you as soon as possible.
+        </p>
+
+        <div style="margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.18);">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,.48);margin-bottom:9px;">
+            EMAIL ME DIRECTLY
+          </div>
+          <a href="mailto:makhdoomwork343@gmail.com" style="color:#ffffff;font-size:14px;font-weight:700;text-decoration:none;">
+            makhdoomwork343@gmail.com ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <form action="https://formsubmit.co/makhdoomwork343@gmail.com" method="POST" style="
+        background:rgba(255,255,255,.07);
+        border:1px solid rgba(255,255,255,.14);
+        border-radius:20px;
+        padding:30px;
+        display:flex;
+        flex-direction:column;
+        gap:16px;
+      ">
+        <input type="hidden" name="_subject" value="New Portfolio Project Inquiry — Makhdoom Nawz">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">YOUR NAME</label>
+            <input type="text" name="name" placeholder="Enter your name" required style="
+              width:100%;height:48px;padding:0 15px;border-radius:9px;
+              border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);
+              color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;box-sizing:border-box;
+            ">
+          </div>
+
+          <div>
+            <label style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">EMAIL ADDRESS</label>
+            <input type="email" name="email" placeholder="you@example.com" required style="
+              width:100%;height:48px;padding:0 15px;border-radius:9px;
+              border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);
+              color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;box-sizing:border-box;
+            ">
+          </div>
+        </div>
+
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">PROJECT / SUBJECT</label>
+          <input type="text" name="subject" placeholder="What do you need help with?" required style="
+            width:100%;height:48px;padding:0 15px;border-radius:9px;
+            border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);
+            color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;box-sizing:border-box;
+          ">
+        </div>
+
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">TELL ME ABOUT YOUR PROJECT</label>
+          <textarea name="message" placeholder="Tell me about your project, goals or requirements..." required style="
+            width:100%;height:125px;padding:14px 15px;border-radius:9px;
+            border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);
+            color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;resize:vertical;box-sizing:border-box;
+          "></textarea>
+        </div>
+
+        <button type="submit" style="
+          width:100%;height:52px;border:0;border-radius:10px;
+          background:#c8f05a;color:#17231f;
+          font-family:Manrope,sans-serif;font-size:13px;font-weight:800;
+          cursor:pointer;margin-top:2px;
+        ">SEND MESSAGE ↗</button>
+      </form>
+    </div>
   </div>
- </div>
 </section>
 </main>
 
@@ -280,5 +607,18 @@ new Swiper('.project-slider',{
  breakpoints:{650:{slidesPerView:2},950:{slidesPerView:3}}
 });
 </script>
+
+<style>
+@media(max-width:800px){
+  #contact .wrap > div:last-child{grid-template-columns:1fr !important;padding:32px !important}
+  #contact h2{font-size:42px !important}
+}
+@media(max-width:560px){
+  #contact .wrap > div:last-child{padding:22px !important}
+  #contact form > div:first-of-type{grid-template-columns:1fr !important}
+  #contact h2{font-size:36px !important}
+}
+</style>
+
 </body>
 </html>
