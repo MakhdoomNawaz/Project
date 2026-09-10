@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Makhdoom Nawz — Web Developer Portfolio">
 <meta name="theme-color" content="#f4efe6">
-<title>Makhdoom Nawz — Web Developer</title>
+<title>Makhdoom Nawz — Web Developer Portfolio</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -112,17 +112,87 @@ section{padding:120px 0}
 .tech-icon{font-size:42px}.tech-card h3{margin:20px 0 8px}.tech-card p{font-size:13px;color:rgba(255,255,255,.62);line-height:1.7}
 .swiper{padding:50px 0 55px}.swiper-pagination-bullet{background:#fff}.swiper-pagination-bullet-active{background:var(--lime)!important}
 
-/* PROJECTS */
+/* PROJECTS — PROFESSIONAL CARDS */
 .projects-intro{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:55px}
 .projects-intro p{max-width:420px;color:var(--muted);line-height:1.7}
-.project-slider .swiper-slide{height:auto}
-.project-card{height:100%;background:var(--white);border:1px solid var(--line);border-radius:28px;padding:26px;display:flex;flex-direction:column;min-height:390px;transition:.35s}
-.project-card:hover{transform:translateY(-8px);box-shadow:0 25px 55px rgba(23,35,31,.1)}
-.project-visual{height:155px;border-radius:16px;background:linear-gradient(135deg,var(--forest),#315f4d);margin-bottom:25px;position:relative;overflow:hidden}
-.project-visual:before{content:"</>";position:absolute;right:15px;bottom:-20px;font:700 110px 'DM Mono';color:rgba(255,255,255,.09)}
-.project-visual.orange{background:linear-gradient(135deg,var(--orange),#f0a34b)}.project-visual.lime{background:linear-gradient(135deg,#9ccf3b,var(--forest)}.project-visual.sand{background:linear-gradient(135deg,#a08d76,#e7dcc9)}
-.project-meta{font:500 10px 'DM Mono';color:var(--orange);text-transform:uppercase;letter-spacing:1px}.project-card h3{font:700 27px 'Playfair Display';margin:10px 0}.project-card p{font-size:13px;color:var(--muted);line-height:1.7}
-.project-card a{margin-top:auto;padding-top:22px;font-size:12px;font-weight:800;color:var(--forest)}.project-card a:hover{color:var(--orange)}
+.project-slider .swiper-slide{height:auto;display:flex}
+.project-card{
+  height:100%;
+  width:100%;
+  background:rgba(255,253,248,.96);
+  border:1px solid rgba(23,35,31,.12);
+  border-radius:28px;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  min-height:430px;
+  transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
+  box-shadow:0 8px 25px rgba(23,35,31,.035);
+}
+.project-card:hover{
+  transform:translateY(-9px);
+  box-shadow:0 25px 55px rgba(23,35,31,.13);
+  border-color:rgba(23,35,31,.20);
+}
+.project-visual{
+  height:205px;
+  border-radius:19px;
+  margin-bottom:22px;
+  position:relative;
+  overflow:hidden;
+  background:var(--forest);
+}
+.project-visual img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  transition:transform .6s ease,filter .4s ease;
+}
+.project-card:hover .project-visual img{
+  transform:scale(1.055);
+}
+.project-visual:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(23,35,31,0) 35%,rgba(23,35,31,.28) 100%);
+  pointer-events:none;
+}
+.project-meta{
+  font:500 10px 'DM Mono';
+  color:var(--orange);
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+}
+.project-card h3{
+  font:800 21px/1.25 Manrope,sans-serif;
+  letter-spacing:-.5px;
+  margin:8px 0 8px;
+}
+.project-card p{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.65;
+  max-width:95%;
+}
+.project-card a{
+  margin-top:auto;
+  padding-top:20px;
+  font-size:11px;
+  letter-spacing:.35px;
+  font-weight:800;
+  color:var(--forest);
+  transition:color .25s ease,transform .25s ease;
+}
+.project-card a:hover{color:var(--orange);transform:translateX(3px)}
+
+@media(max-width:600px){
+  .project-card{min-height:410px;padding:15px;border-radius:23px}
+  .project-visual{height:185px;border-radius:16px}
+  .project-card h3{font-size:19px}
+}
 
 /* CONTACT */
 .contact-box{margin-top:50px;background:var(--orange);border-radius:30px;padding:60px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:40px;color:#fff}
@@ -450,13 +520,13 @@ footer{padding:28px 0;border-top:1px solid var(--line);font-size:12px;color:var(
   <div class="projects-intro reveal"><div><div class="section-label">04 — Selected Portfolio</div><h2 class="section-title">A few things I've brought to life.</h2></div><p>Live websites across healthcare, cloud services, marketing, business and custom web experiences.</p></div>
   <div class="swiper project-slider">
    <div class="swiper-wrapper">
-    <div class="swiper-slide"><article class="project-card"><div class="project-visual"></div><span class="project-meta">Healthcare · Website</span><h3>Gohar Medical Complex</h3><p>Professional healthcare website focused on trust, services and clear information architecture.</p><a href="https://goharmedicalcomplex.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
-    <div class="swiper-slide"><article class="project-card"><div class="project-visual orange"></div><span class="project-meta">Cloud · Business</span><h3>Secure Cloud LLC</h3><p>A modern business web experience for cloud and technology-focused services.</p><a href="https://securecloud-llc.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
-    <div class="swiper-slide"><article class="project-card"><div class="project-visual lime"></div><span class="project-meta">Marketing · Brand</span><h3>Your Future CMO</h3><p>A digital marketing and growth-focused web presence with a professional presentation.</p><a href="https://yourfuturecmo.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
-    <div class="swiper-slide"><article class="project-card"><div class="project-visual sand"></div><span class="project-meta">Business · WordPress</span><h3>One Strong Broadband</h3><p>A service-oriented website designed around clear offerings and customer action.</p><a href="https://golink.1onestrong.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
-    <div class="swiper-slide"><article class="project-card"><div class="project-visual orange"></div><span class="project-meta">Custom Website</span><h3>Rajput Papa</h3><p>A unique web project showcasing flexible front-end implementation and custom presentation.</p><a href="https://rajputpapa.ct.ws/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
-    <div class="swiper-slide"><article class="project-card"><div class="project-visual lime"></div><span class="project-meta">Portfolio Project</span><h3>Modern Web Project</h3><p>Responsive website experience built with contemporary layouts and visual hierarchy.</p><a href="https://yellowgreen-walrus-916850.hostingersite.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
-    <div class="swiper-slide"><article class="project-card"><div class="project-visual sand"></div><span class="project-meta">Web Development</span><h3>Creative Digital Build</h3><p>A live web project demonstrating modern design, responsiveness and development work.</p><a href="https://lightgrey-aardvark-162641.hostingersite.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=85" alt="Project preview" loading="lazy"></div><span class="project-meta">Healthcare · Website</span><h3>Gohar Medical Complex</h3><p>Professional healthcare website focused on trust, services and clear information architecture.</p><a href="https://goharmedicalcomplex.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=85" alt="Project preview" loading="lazy"></div><span class="project-meta">Cloud · Business</span><h3>Secure Cloud LLC</h3><p>A modern business web experience for cloud and technology-focused services.</p><a href="https://securecloud-llc.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=85" alt="Project preview" loading="lazy"></div><span class="project-meta">Marketing · Brand</span><h3>Your Future CMO</h3><p>A digital marketing and growth-focused web presence with a professional presentation.</p><a href="https://yourfuturecmo.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85" alt="Project preview" loading="lazy"></div><span class="project-meta">Business · WordPress</span><h3>One Strong Broadband</h3><p>A service-oriented website designed around clear offerings and customer action.</p><a href="https://golink.1onestrong.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85" alt="Project preview" loading="lazy"></div><span class="project-meta">Custom Website</span><h3>Rajput Papa</h3><p>A unique web project showcasing flexible front-end implementation and custom presentation.</p><a href="https://rajputpapa.ct.ws/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85" alt="Project preview" loading="lazy"></div><span class="project-meta">Portfolio Project</span><h3>Modern Web Project</h3><p>Responsive website experience built with contemporary layouts and visual hierarchy.</p><a href="https://yellowgreen-walrus-916850.hostingersite.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
+    <div class="swiper-slide"><article class="project-card"><div class="project-visual"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85" alt="Project preview" loading="lazy"></div><span class="project-meta">Web Development</span><h3>Creative Digital Build</h3><p>A live web project demonstrating modern design, responsiveness and development work.</p><a href="https://lightgrey-aardvark-162641.hostingersite.com/" target="_blank">VIEW LIVE WEBSITE ↗</a></article></div>
    </div>
    <div class="swiper-pagination"></div>
   </div>
