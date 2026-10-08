@@ -1113,7 +1113,7 @@ footer{position:relative;overflow:hidden}footer::before{content:"";position:abso
 </div>
 </div>
 <!-- FORM -->
-<form action="https://formsubmit.co/makhdoomwork343@gmail.com" method="POST" style="
+<form id="portfolioContactForm" action="https://formsubmit.co/makhdoomwork343@gmail.com" method="POST" style="
         background:rgba(255,255,255,.07);
         border:1px solid rgba(255,255,255,.14);
         border-radius:20px;
@@ -1166,6 +1166,7 @@ footer{position:relative;overflow:hidden}footer::before{content:"";position:abso
           cursor:pointer;margin-top:2px;
         " type="submit">SEND MESSAGE ↗</button>
 </form>
+<div id="formStatus" role="status" aria-live="polite" style="display:none;margin-top:4px;font-size:12px;font-weight:700;"></div>
 </div>
 </div>
 </section>
@@ -1363,6 +1364,48 @@ function downloadCV(event) {
     alert("CV download failed. Please try again.");
   }
 }
+<script>
+/* Contact form — submit without redirecting to FormSubmit activation page */
+(function(){
+  const form=document.getElementById('portfolioContactForm');
+  const status=document.getElementById('formStatus');
+  if(!form || !status) return;
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const button=form.querySelector('button[type="submit"]');
+    const original=button ? button.innerHTML : 'SEND MESSAGE ↗';
+    if(button){button.disabled=true;button.innerHTML='SENDING…';button.style.opacity='.7';}
+
+    status.style.display='block';
+    status.textContent='Sending your message…';
+    status.style.color='#c8f05a';
+
+    try{
+      const response=await fetch(form.action,{
+        method:'POST',
+        body:new FormData(form),
+        headers:{'Accept':'application/json'}
+      });
+      const data=await response.json().catch(()=>({}));
+
+      if(response.ok && (data.success===true || data.success==='true' || !data.error)){
+        form.reset();
+        status.textContent='Message sent successfully. I’ll get back to you soon.';
+        status.style.color='#c8f05a';
+      }else{
+        throw new Error(data.message || 'Submission failed');
+      }
+    }catch(error){
+      console.error('Contact form error:',error);
+      status.textContent='Message could not be sent. Please email makhdoomwork343@gmail.com directly.';
+      status.style.color='#ffb4a2';
+    }finally{
+      if(button){button.disabled=false;button.innerHTML=original;button.style.opacity='1';}
+    }
+  });
+})();
+</script>
 </script>
 </body>
 </html>
