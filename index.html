@@ -1130,7 +1130,8 @@ footer{position:relative;overflow:hidden}footer::before{content:"";position:abso
 </div>
 </div>
 <!-- FORM -->
-<form action="https://formsubmit.co/makhdoomwork343@gmail.com" method="POST" style="
+<!-- FORM -->
+<form id="portfolio-contact-form" class="makhdoom-contact-form" novalidate style="
         background:rgba(255,255,255,.07);
         border:1px solid rgba(255,255,255,.14);
         border-radius:20px;
@@ -1139,49 +1140,30 @@ footer{position:relative;overflow:hidden}footer::before{content:"";position:abso
         flex-direction:column;
         gap:16px;
       ">
-<input name="_subject" type="hidden" value="New Portfolio Project Inquiry — Makhdoom Nawaz"/>
-<input name="_captcha" type="hidden" value="false"/>
-<input name="_template" type="hidden" value="table"/>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" class="makhdoom-form-grid">
 <div>
-<label style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">YOUR NAME</label>
-<input name="name" placeholder="Enter your name" required="" style="
-              width:100%;height:48px;padding:0 15px;border-radius:9px;
-              border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);
-              color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;box-sizing:border-box;
-            " type="text"/>
+<label for="contact-name" style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">YOUR NAME</label>
+<input id="contact-name" name="name" autocomplete="name" placeholder="Enter your name" required maxlength="100" style="width:100%;height:48px;padding:0 15px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" type="text"/>
 </div>
 <div>
-<label style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">EMAIL ADDRESS</label>
-<input name="email" placeholder="you@example.com" required="" style="
-              width:100%;height:48px;padding:0 15px;border-radius:9px;
-              border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);
-              color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;box-sizing:border-box;
-            " type="email"/>
+<label for="contact-email" style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">EMAIL ADDRESS</label>
+<input id="contact-email" name="email" autocomplete="email" placeholder="you@example.com" required maxlength="254" style="width:100%;height:48px;padding:0 15px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" type="email"/>
 </div>
 </div>
 <div>
-<label style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">PROJECT / SUBJECT</label>
-<input name="subject" placeholder="What do you need help with?" required="" style="
-            width:100%;height:48px;padding:0 15px;border-radius:9px;
-            border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);
-            color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;box-sizing:border-box;
-          " type="text"/>
+<label for="contact-subject" style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">PROJECT / SUBJECT</label>
+<input id="contact-subject" name="subject" placeholder="What do you need help with?" required maxlength="160" style="width:100%;height:48px;padding:0 15px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;box-sizing:border-box;" type="text"/>
 </div>
 <div>
-<label style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">TELL ME ABOUT YOUR PROJECT</label>
-<textarea name="message" placeholder="Tell me about your project, goals or requirements..." required="" style="
-            width:100%;height:125px;padding:14px 15px;border-radius:9px;
-            border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);
-            color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;resize:vertical;box-sizing:border-box;
-          "></textarea>
+<label for="contact-message" style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;">TELL ME ABOUT YOUR PROJECT</label>
+<textarea id="contact-message" name="message" placeholder="Tell me about your project, goals or requirements..." required maxlength="5000" style="width:100%;min-height:125px;padding:14px 15px;border-radius:9px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);color:#ffffff;font-family:Manrope,sans-serif;font-size:13px;outline:none;resize:vertical;box-sizing:border-box;"></textarea>
 </div>
-<button style="
-          width:100%;height:52px;border:0;border-radius:10px;
-          background:#c8f05a;color:#17231f;
-          font-family:Manrope,sans-serif;font-size:13px;font-weight:800;
-          cursor:pointer;margin-top:2px;
-        " type="submit">SEND MESSAGE ↗</button>
+<div aria-hidden="true" style="position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important;">
+<label for="contact-website">Leave this field empty</label>
+<input id="contact-website" name="website" tabindex="-1" autocomplete="off" type="text"/>
+</div>
+<button id="contact-submit" style="width:100%;min-height:52px;border:0;border-radius:10px;background:#c8f05a;color:#17231f;font-family:Manrope,sans-serif;font-size:13px;font-weight:800;cursor:pointer;margin-top:2px;transition:transform .25s ease,opacity .25s ease;" type="submit">SEND MESSAGE ↗</button>
+<p id="contact-form-status" role="status" aria-live="polite" style="display:none;margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.6;"></p>
 </form>
 </div>
 </div>
@@ -1381,5 +1363,63 @@ function downloadCV(event) {
   }
 }
 </script>
+
+<style id="makhdoom-contact-form-enhancements">
+#portfolio-contact-form input:focus,#portfolio-contact-form textarea:focus{border-color:#c8f05a!important;box-shadow:0 0 0 3px rgba(200,240,90,.14);background:rgba(255,255,255,.12)!important}
+#portfolio-contact-form input::placeholder,#portfolio-contact-form textarea::placeholder{color:rgba(255,255,255,.58)}
+#portfolio-contact-form button:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.16)}
+#portfolio-contact-form button:disabled{opacity:.65;cursor:wait}
+#portfolio-contact-form [aria-invalid="true"]{border-color:#ff8b7a!important;box-shadow:0 0 0 2px rgba(255,107,53,.16)}
+@media(max-width:560px){.makhdoom-form-grid{grid-template-columns:1fr!important;gap:16px!important}#portfolio-contact-form{padding:22px!important}}
+</style>
+<script id="makhdoom-contact-form-handler">
+(function(){
+ const form=document.getElementById('portfolio-contact-form');
+ if(!form) return;
+ const button=document.getElementById('contact-submit');
+ const status=document.getElementById('contact-form-status');
+ const fields=[...form.querySelectorAll('input[name="name"],input[name="email"],input[name="subject"],textarea[name="message"]')];
+ function showStatus(message,type){
+   status.textContent=message; status.style.display='block';
+   status.style.color=type==='success'?'#d7ff69':type==='error'?'#ffb2a5':'#ffffff';
+ }
+ fields.forEach(field=>field.addEventListener('input',()=>field.removeAttribute('aria-invalid')));
+ form.addEventListener('submit',async function(event){
+   event.preventDefault();
+   if(button.disabled) return;
+   let valid=true;
+   fields.forEach(field=>{
+     const value=field.value.trim();
+     const ok=field.checkValidity()&&value.length>0;
+     field.setAttribute('aria-invalid',String(!ok));
+     if(!ok) valid=false;
+   });
+   const email=document.getElementById('contact-email');
+   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){email.setAttribute('aria-invalid','true');valid=false;}
+   if(!valid){showStatus('Please check the required fields and enter a valid email address.','error');form.querySelector('[aria-invalid="true"]').focus();return;}
+   const payload={
+     name:document.getElementById('contact-name').value.trim(),
+     email:email.value.trim(),
+     subject:document.getElementById('contact-subject').value.trim(),
+     message:document.getElementById('contact-message').value.trim(),
+     website:document.getElementById('contact-website').value
+   };
+   button.disabled=true;button.setAttribute('aria-busy','true');button.textContent='SENDING…';
+   showStatus('Sending your message securely…','info');
+   try{
+     const response=await fetch('/api/send-email',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+     const result=await response.json().catch(()=>({}));
+     if(!response.ok) throw new Error(result.error||'Your message could not be sent. Please try again.');
+     form.reset();fields.forEach(field=>field.removeAttribute('aria-invalid'));
+     showStatus('Thanks! Your message has been accepted for sending. I’ll get back to you as soon as possible.','success');
+     button.textContent='MESSAGE SENT ✓';
+   }catch(error){
+     showStatus(error.message||'Something went wrong. Please try again or email me directly.','error');
+     button.disabled=false;button.removeAttribute('aria-busy');button.textContent='TRY AGAIN ↗';
+   }
+ });
+})();
+</script>
+
 </body>
 </html>
